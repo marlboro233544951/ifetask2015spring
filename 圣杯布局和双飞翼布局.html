@@ -1,0 +1,127 @@
+<!-- 作者：吕延庆
+链接：https://www.zhihu.com/question/21504052/answer/50053054
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+圣杯布局的来历是2006年发在a list part上的这篇文章：
+In Search of the Holy Grail · An A List Apart Article
+圣杯是西方表达“渴求之物"的意思，不是一种对页面的形象表达。
+双飞翼据考源自淘宝UED，应该是一种页面的形象的表达。
+
+圣杯布局和双飞翼布局解决的问题是一样的，就是两边顶宽，中间自适应的三栏布局，中间栏要在放在文档流前面以优先渲染。
+
+圣杯布局和双飞翼布局解决问题的方案在前一半是相同的，也就是三栏全部float浮动，但左右两栏加上负margin让其跟中间栏div并排，以形成三栏布局。
+
+不同在于解决”中间栏div内容不被遮挡“问题的思路不一样：
+圣杯布局，为了中间div内容不被遮挡，将中间div设置了左右padding-left和padding-right后，将左右两个div用相对布局position: relative并分别配合right和left属性，以便左右两栏div移动后不遮挡中间div。
+
+双飞翼布局，为了中间div内容不被遮挡，直接在中间div内部创建子div用于放置内容，在该子div里用margin-left和margin-right为左右两栏div留出位置。
+多了1个div，少用大致4个css属性（圣杯布局中间divpadding-left和padding-right这2个属性，加上左右两个div用相对布局position: relative及对应的right和left共4个属性，一共6个；而双飞翼布局子div里用margin-left和margin-right共2个属性，6-2=4），个人感觉比圣杯布局思路更直接和简洁一点。
+
+简单说起来就是”双飞翼布局比圣杯布局多创建了一个div，但不用相对布局了“，而不是你题目中说的”去掉relative"就是双飞翼布局“。
+
+github/xdlrt/roadToFe
+在双飞翼布局之前，Kevin Cornell提出了圣杯布局，同样可以实现中间列自适应且优先加载的布局。
+
+和双飞翼布局最大的不同是，其将中间三列放在一个div中，为此div设置padding，从而为左右两列腾出位置，而左右两列除了需要利用负边距实现定位外，还需要利用相对定位消除IE6中的BUG。
+
+圣杯布局在实现时需要6个css属性，而双飞翼只需要4个，更简洁，更优雅。
+
+两种布局的初衷都是在实现正常需求的情况下达到兼容，随着时间发展，慢慢已经不再需要兼容IE6，甚至IE7/8.
+
+技术是一份财富，永远不会随时间褪色。 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯布局与双飞翼布局</title>
+	<style type="text/css">
+		/*	圣杯布局*/
+	     .main {       
+	          float: left;      
+	          width: 100%;  
+	          background:#39c;
+	          height:300px;
+	      } 
+	    .sub {      
+	          float: left;       
+	          width: 190px;       
+	          margin-left: -100%;  
+	          background:#f60;
+	          height:300px;
+	          position:relative;
+	          left:-190px;
+	     }  
+	     .extra {       
+	            float: left;       
+	            width: 230px;       
+	            margin-left: -230px;
+	            background:#666;
+	            height:300px;
+	            position:relative;
+	            right:-230px;
+	     } 
+	     #bd {       
+	         padding: 0 230px 0 190px;  
+	     }
+		/*双飞翼布局*/
+	    /* *{
+	            margin: 0;
+	            padding: 0;
+	        }
+	        body{
+	            color: red;
+	            text-align: center;
+	            font-weight: bold;
+	        }
+	        .container{
+	            width: 100%;
+	        }
+	        .col{
+	            float: left;
+	        }
+	        .center{
+	            width: 100%;
+	            min-height: 500px;
+	            background: #000;
+	        }
+	        .main{
+	            margin-left: 310px;
+	            margin-right: 210px;
+	            min-height: 500px;
+	        }
+	        .left{
+	            /*利用负边距覆盖在center上且居左*/
+	           /* margin-left: -100%;
+	            width: 300px;
+	            min-height: 500px;
+	            background: blue;
+	        }
+	        .right{
+	            margin-left: -200px;
+	            min-height: 500px;
+	            width: 200px;
+	            background: yellow;*/
+	        /*}*/
+	  </style>
+</head>
+<body>
+       
+  <div id="bd">                   
+       <div class="main">圣杯布局主体</div>                
+    <div class="sub">圣杯布局上部</div>                   
+    <div class="extra">extra</div>       
+  </div>          
+
+
+<!--  <div class = "container">
+        <div class="center col">
+            <div class="main">这是双飞翼布局</div>
+        </div>
+        <div class="left col">这是双飞翼布局</div>
+        <div class="right col">这是双飞翼布局</div>
+    </div>
+ -->
+ <div style="right=100px;backgronud= red"></div>
+</body>
+</html>

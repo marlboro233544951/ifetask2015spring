@@ -1,0 +1,14 @@
+/* 学习以下CSS是怎么运作的，然后创建一个task0001.css的文件，并在task0001.html中引入它，然后我们对task0001.html做一些让他变得花哨一点的事情：
+
+让一级标题的文字颜色变成蓝色
+二级标题的文字大小变成14px
+段落的文字大小变成12px，文字颜色是黄色，带一个黑色的背景色
+图片有一个红色的，2px粗的边框 */
+h1{color: blue;}
+h2{font-size:14px;}
+p.p{font-size: 12px;
+	color: yellow;
+	background-color: black;}
+img{border-style: solid;
+	border-width:2px;
+	border-color:red blue;};

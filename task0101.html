@@ -1,0 +1,171 @@
+<!--创建一个HTML文件，比如task0001.html文件，在里面实现一些代码，完成你的第一个网页。
+
+这个页面中，需要有以下内容：
+
+一个一级标题，内容是你的Github账号
+一个无序列表，包括2个项目，里面每一个项目是一个链接，分别链接到task0001.html以及你的微博（或其他什么网站）
+一个二级标题，内容随意（）
+一个段落，内容随意（）
+一个图片（）。-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task0101</title>
+	<link rel="stylesheet" type="text/css" href="task0101css.css" />
+	<style>
+	/* 在你的task0001.html中，快速实践以下文本相关的所有属性内容：
+		text-indent
+		text-transform
+		text-decoration
+		text-align
+		word-spacing
+		white-space
+		color
+		line-height
+		font
+		font-family
+		font-size	    W3C 推荐使用 em 尺寸单位。
+						1em 等于当前的字体尺寸。如果一个元素的 font-size 为 16 像素，那么对于该元素，1em 就等于 16 像素。在设置字体大小时，em 的值会相对于父元素的字体大小改变。
+						浏览器中默认的文本大小是 16 像素。因此 1em 的默认尺寸是 16 像素。
+						可以使用下面这个公式将像素转换为 em：pixels/16=em
+						（注：16 等于父元素的默认字体大小，假设父元素的 font-size 为 20px，那么公式需改为：pixels/20=em）结合使用百分比和 EM
+						在所有浏览器中均有效的方案是为 body 元素（父元素）以百分比设置默认的 font-size 值：
+						body {font-size:100%;}
+						h1 {font-size:3.75em;}
+						h2 {font-size:2.5em;}
+						p {font-size:0.875em;}
+		font-weight     属性设置文本的粗细。
+						使用 bold 关键字可以将文本设置为粗体。
+						关键字 100 ~ 900 为字体指定了 9 级加粗度。如果一个字体内置了这些加粗级别，那么这些数字就直接映射到预定义的级别，100 对应最细的字体变形，900 对应最粗的字体变形。数字 400 等价于 normal，而 700 等价于 bold。
+		font-face 		CSS3加入
+						语法规则 @font-face {
+								font-family: 'YourWebFontName';
+								src: url('YourWebFontName.eot'); * IE9 Compat Modes *
+								src: url('YourWebFontName.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 *
+							             url('YourWebFontName.woff') format('woff'), /* Modern Browsers *
+							             url('YourWebFontName.ttf')  format('truetype'), /* Safari, Android, iOS *
+							             url('YourWebFontName.svg#YourWebFontName') format('svg'); /* Legacy iOS *
+							             然后应用在font-family中 */
+		p.textindent {text-indent: 10%;}
+		p.uppercase {text-transform: uppercase;}
+		p.lowercase {text-transform: lowercase;}
+		p.capitalize {text-transform: capitalize;}
+		/* 要注意的是，如果两个不同的装饰都与同一元素匹配，胜出规则的值会完全取代另一个值。对于给定的规则，所有 class 为 stricken 的 h2 元素都只有一个贯穿线装饰，而没有下划线和上划线，因为 text-decoration 值会替换而不是累积起来。 */
+		h2.stricken {text-decoration: line-through;}
+		h2 {text-decoration: underline overline;} 
+		h1 {text-align:center;}
+		p.spread {word-spacing: 30px;}
+		p.tight {word-spacing: -0.5em;}
+		p.white-space-normal {white-space: normal;}
+		p.white-space-preline {white-space: pre-line;}
+		p.white-space-pre {white-space: pre;}
+		/* 当 white-space 属性设置为 normal 时，会合并所有的空白符，并忽略换行符。
+		当 white-space 属性设置为 pre 时，浏览器不会合并空白符，也不会忽略换行符。IE 7 以及更早版本的浏览器不支持该值
+		下面的表格总结了 white-space 属性的行为：
+		值	            空白符	换行符	自动换行
+		pre-line	    合并	保留	允许
+		normal	        合并	忽略	允许
+		nowrap	        合并	忽略	不允许
+		pre	            保留	保留	不允许
+		pre-wrap	    保留	保留	允许*/
+		p.small-line {line-height: 90%}
+		p.big-line {line-height: 200%}
+		p.serif{font-family:"Times New Roman",Georgia,Serif}
+		p.sansserif{font-family:Arial,Verdana,Sans-serif}
+		h2.pos_abs
+		{
+		position:absolute;
+		left:100px;
+		top:150px
+		}
+	/*	有的圆角矩形是复杂图案，无法直接用border-radius，请在不使用border-radius的情况下实现一个可复用的高度和宽度都自适应的圆角矩形*/
+		#mid{height:100%; background-color: white; border-left: 1px solid black; border-right: 1px solid black;}
+		.rtop{display: block; background-color:white;}
+		.rtop div{display: block; height: 1px; overflow: hidden;}
+		.rtop .r1{margin: 0 3px; background-color: black;}
+		.rtop .r2{margin: 0 2px; border-left: 1px solid black; border-right: 1px solid black;}
+		.rtop .r3{margin: 0 1px; border-left: 1px solid black; border-right: 1px solid black;}
+		.rtop .r4{margin: 0 1px; border-left: 1px solid black; border-right: 1px solid black; height: 1px;}
+		#mid p{margin: 0; font-size: 12px; line-height: 24px; background-color: white; color: black; overflow: hidden; text-indent: 2em; white-space: pre-wrap; padding:0 10px;}
+
+div.ye{
+position: absolute;
+left: 50%;
+margin-left: -25em;
+background-color: yellow;
+width: 50em;
+height: 25em;
+text-align: center;
+}
+
+	</style>	 
+</head>
+<body>   
+	<h1>marlboro233544951</h1>
+	<ul>
+		<li><a href="http://weibo.com/u/2236545255?refer_flag=1001030101_&is_all=1">weibo</a></li>
+		<li><a href="https://github.com/marlboro233544951">github</a></li>
+	</ul>
+	<h2 class="stricken">xixi</h2>
+	<p class="p">haha</p>	
+	<p class="textindent">不管全世界所有人怎么说，我都认为自己的感受才是正确的。无论别人怎么看，我绝不打乱自己的节奏。喜欢的事自然可以坚持，不喜欢怎么也长久不了。</p>
+	<p class="spread">This is some text sprea. This is some text.</p>
+	<p class="tight">This is some text tight. This is some text.</p>
+	<p class="uppercase">This is some text in a paragraph.</p>
+	<p class="lowercase">This is some text in a paragraph.</p>
+	<p class="capitalize">This is some text in a paragraph.</p>
+	<p class="white-space-normal">This     paragraph has    many
+    spaces           in it.</p>
+	<p class="white-space-pre">This     paragraph has    many
+    spaces           in it.</p>
+	    <p class="small-line white-space-pre">
+	这个段落拥有更小的行高。white-space-pre
+	这个段落拥有更小的行高。
+	这个段落拥有更小的行高。
+
+	</p>
+
+	<p class="big-line white-space-preline">
+	这个段落拥有更大的行高。white-space-preline
+	这个段落拥有更大的行高。
+	这个段落拥有更大的行高。
+
+	</p>
+	<p class="serif">This is a paragraph, shown in the Times New Roman font.</p>
+	<p class="sansserif">This is a paragraph, shown in the Arial font.</p>
+	<div>
+	some text
+	111
+	222
+	<p>Some more text.</p>
+	</div>
+	
+
+	<img src="C:\Users\marlboro\Pictures\蓝健2号.bmp" alt="蓝健">
+
+
+<div class="rtop">
+	<div class="r1"></div>
+	<div class="r2"></div>
+	<div class="r3"></div>
+	<div class="r4"></div>
+</div>
+<div id="mid"><p>有的圆角矩形是复杂图案，无法直接用border-radius，请在不使用border-radius的情况下实现一个可复用的高度和宽度都自适应的圆角矩形</p></div>
+<div class="rtop">
+	<div class="r4"></div>
+	<div class="r3"></div>
+	<div class="r2"></div>
+	<div class="r1"></div>
+</div>
+
+
+
+
+<div class="ye">
+div居中
+</div>
+
+</body>
+</html>
