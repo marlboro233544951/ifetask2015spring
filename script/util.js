@@ -271,6 +271,40 @@ function isMobilePhone(phone) {
         return false;
         }
         else{
-        return reg.exec(str);
+        return reg.test(str);
         }
 }
+
+// 为element增加一个样式名为newClassName的新样式
+function addClass(element, newClassName) {
+    // your implement
+    element.setAttribute("class","newClassName");
+}
+
+// 移除element中的样式oldClassName
+function removeClass(element, oldClassName) {
+    // your implement
+    var reg = /oldClassName/
+    if(reg.test(element.class))
+   {
+    element.class = element.class.replace(reg,""); 
+   };
+}
+
+// 判断siblingNode和element是否为同一个父元素下的同一级的元素，返回bool值
+function isSiblingNode(element, siblingNode) {
+    // your implement
+    return (siblingNode.parentNode == element.parentNode);
+}
+
+// 获取element相对于浏览器窗口的位置，返回一个对象{x, y}
+function getPosition(element) {
+    // your implement使用getBoundingClientRect()方法。它返回一个对象，其中包含了left、right、top、bottom四个属性，分别对应了该元素的左上角和右下角相对于浏览器窗口（viewport）左上角的距离。
+    var X= element.getBoundingClientRect().left+document.documentElement.scrollLeft;
+
+    var Y =element.getBoundingClientRect().top+document.documentElement.scrollTop;
+    console.log(X,Y);
+}
+var div = document.getElementById("divphone");
+getPosition(div);
+// your implement

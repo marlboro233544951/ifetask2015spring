@@ -3,16 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>task02js</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/task02.css" />
 </head>
 <body>
 	
 
-	<input id="number1" type="text">
-	<input id="number2" type="text">
+	<p>数字1</p><input id="number1" type="text">
+	<p>数字2</p><input id="number2" type="text">
 	<span id="result"></span>
-	<button id="addbtn"></button>
-<script  src="../script/task02.js"></script>
-<script  src="../script/util.js"></script>
+	<button id="addbtn">相加</button>
+	<div class="phone">
+	<div id="divphone">手机号码：<input type="text" id="phone"></div>
+	<div>电子邮箱：<input type="text" id="email"></div>
+	</div> 
+	<script  src="../script/util.js"></script>
 	<!-- 提示：外部脚本不能包含 <script> 标签
  <script>
 function $(id) {
@@ -41,5 +45,6 @@ function initEvent() {
 initEvent();
 </script>
  -->
+
 </body>
 </html>
